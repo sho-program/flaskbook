@@ -2,8 +2,18 @@ import logging
 import os
 
 from email_validator import EmailNotValidError, validate_email
-from flask import (Flask, current_app, flash, g, redirect, render_template,
-                   request, url_for)
+from flask import (
+    Flask,
+    current_app,
+    flash,
+    g,
+    make_response,
+    redirect,
+    render_template,
+    request,
+    session,
+    url_for,
+)
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_mail import Mail, Message
 
@@ -45,7 +55,13 @@ def show_name(name):
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    response = make_response(render_template("contact.html"))
+
+    response.set_cookie("flaskbook key", "flaskbook value")
+
+    session["username"] = "ichiro"
+
+    return response
 
 
 @app.route("/contact/complete", methods=["GET", "POST"])
