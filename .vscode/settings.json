@@ -1,3 +1,16 @@
 {
-    "python.linting.flake8Enabled": true
+    "tabnine.experimentalAutoImports": true,
+    "redhat.telemetry.enabled": true,
+    "workbench.iconTheme": "vscode-icons",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "python.linting.flake8Args": [
+        "--max-line-length=88"
+    ],
+    "python.linting.flake8Enabled": true,
+    "python.linting.banditEnabled": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    }
 }
